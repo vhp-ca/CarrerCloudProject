@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "CustomTypes/DecimalValue.proto";
+
+option csharp_namespace = "CareerCloud.gRPC.Protos";
+
+service ApplicantProfile {
+rpc GetApplicantProfile(ApplicantProfileIdRequest) returns (ApplicantProfileReply);
+rpc GetApplicantProfiles(google.protobuf.Empty) returns (ApplicantProfiles);
+rpc AddApplicantProfile(ApplicantProfiles) returns (google.protobuf.Empty);
+rpc UpdateApplicantProfile(ApplicantProfiles) returns (google.protobuf.Empty);
+rpc DeleteApplicantProfile(ApplicantProfiles) returns (google.protobuf.Empty);
+}
+
+message ApplicantProfiles {
+repeated ApplicantProfileReply AppEdus = 1;
+}
+message ApplicantProfileIdRequest {
+	string Id = 1;
+}
+
+message ApplicantProfileReply {
+	string Id =1;
+	string Login = 2;
+	DecimalValue CurrentSalary =3;
+	DecimalValue CurrentRate = 4;
+	string Currency = 5;
+	string Country = 6;
+	string Province = 7;
+	string Street = 8;
+	string City = 9;
+	string PostalCode = 10;
+	bytes TimeStamp = 11;
+
+}

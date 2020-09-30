@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "CareerCloud.gRPC.Protos";
+
+service SystemLanguageCode {
+rpc GetSystemLanguageCode(SystemLanguageCodeIdRequest) returns (SystemLanguageCodeReply);
+rpc GetSystemLanguageCodes(google.protobuf.Empty) returns (SystemLanguageCodes);
+rpc AddSystemLanguageCode(SystemLanguageCodes) returns (google.protobuf.Empty);
+rpc UpdateSystemLanguageCode(SystemLanguageCodes) returns (google.protobuf.Empty);
+rpc DeleteSystemLanguageCode(SystemLanguageCodes) returns (google.protobuf.Empty);
+}
+
+message SystemLanguageCodes {
+repeated SystemLanguageCodeReply AppEdus = 1;
+}
+message SystemLanguageCodeIdRequest {
+	string Id = 1;
+}
+
+message SystemLanguageCodeReply {
+	string LanguageID =1;
+	string Name = 2;
+	string NativeName =3;
+}
